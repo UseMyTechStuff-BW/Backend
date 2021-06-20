@@ -1,60 +1,343 @@
-# Build Week Scaffolding for Node and PostgreSQL
+# Use My Tech App
 
-## Video Tutorial
+### POST - Create Account
+create a user with role type of renter or owner
+<details>
+<summary>IN PROCESS</summary>
 
-The following tutorial explains how to set up this project using PostgreSQL and Heroku.
+```JSON
+what you need:
+{
+    "username": "marco",  
+    "password": "foobar", 
+    "role": "owner"
+}
 
-[![Setting up PostgreSQL for Build Week](https://img.youtube.com/vi/kTO_tf4L23I/maxresdefault.jpg)](https://www.youtube.com/watch?v=kTO_tf4L23I)
+what you get back:
+{
+    "user_id": 12,
+    "username": "mary",
+    "password": "$2a$08$cHlS2uqmuiHGvZcqcnFKNOnWcHJD49nDpINZslFqKaQi8dWMIoclC",
+    "role": "owner"
+}
+```
+</details>
 
-## Requirements
+-----------------------------------------------------------------------------------------
 
-- [PostgreSQL, pgAdmin 4](https://www.postgresql.org/download/) and [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) installed in your local machine.
-- A Heroku app with the [Heroku PostgreSQL Addon](https://devcenter.heroku.com/articles/heroku-postgresql#provisioning-heroku-postgres) added to it.
-- Development and testing databases created with [pgAdmin 4](https://www.pgadmin.org/docs/pgadmin4/4.29/database_dialog.html).
+### POST - Login
+<details>
+<summary>IN PROCESS</summary>
 
-## Starting a New Project
+```JSON
+what you need:
+role can be owner or renter
+{
+    "username": "marco",  
+    "password": "foobar",
+}
 
-- Create a new repository using this template, and clone it to your local.
-- Create a `.env` file and follow the instructions inside `knexfile.js`.
-- Fix the scripts inside `package.json` to use your Heroku app.
+what you get back:
+{
+    "message": "marco is back!",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxMCwidXNlcm5hbWUiOiJtYXJjbyIsInJvbGUiOiJvd25lciIsImlhdCI6MTYxOTM2ODY1OCwiZXhwIjoxNjE5NDU1MDU4fQ.Hl9vOkOOhNPTcuckYaoj1b8KCMUvCHXGgMPFK4Vd2XA",
+    "role": "owner"
+}
+```
+</details>
 
-## Scripts
+-----------------------------------------------------------------------------------------
 
-- **start**: Runs the app.
-- **server**: Runs the app with Nodemon.
-- **migrate**: Migrates the local development database to the latest.
-- **rollback**: Rolls back migrations in the local development database.
-- **seed**: Truncates all tables in the local development database, feel free to add more seed files.
-- **test**: Runs tests.
-- **deploy**: Deploys the main branch to Heroku.
+### GET - Get All Equipment
+<details>
+<summary>IN PROCESS</summary>
+    
+```JSON
+Returns ALL equipment. Anyone can make this call.
 
-**The following scripts NEED TO BE EDITED before using: replace `YOUR_HEROKU_APP_NAME_HERE`**
+what you get back:
+[
+    {
+        "owner": {
+            "id": 2,
+            "username": "Mario"
+        },
+        "id": 1,
+        "name": "camera",
+        "imgUrl": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
+        "description": "like new",
+        "isAvailable": true
+    },
+    {
+        "owner": {
+            "id": 2,
+            "username": "Mario"
+        },
+        "id": 2,
+        "name": "video camera",
+        "imgUrl": "https://images.unsplash.com/photo-1589872307379-0ffdf9829123?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1051&q=80",
+        "description": "excellent audio and image",
+        "isAvailable": true
+    },
+    {
+        "owner": {
+            "id": 2,
+            "username": "Mario"
+        },
+        "id": 3,
+        "name": "podcast microphone",
+        "imgUrl": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+        "description": "best audio out there",
+        "isAvailable": true
+    }
+]
+```
+</details>
 
-- **migrateh**: Migrates the Heroku database to the latest.
-- **rollbackh**: Rolls back migrations in the Heroku database.
-- **databaseh**: Interact with the Heroku database from the command line using psql.
-- **seedh**: Runs all seeds in the Heroku database.
+-----------------------------------------------------------------------------------------
 
-## Hot Tips
+### GET - Get Equipment By Id
+<details>
+<summary>IN PROCESS</summary>
+    
+```JSON
+Returns equipment with specific id. Anyone can make this call.
 
-- Figure out the connection to the database and deployment before writing any code.
+what you get back:
+{
+    "owner": {
+        "id": 2
+    },
+    "id": 1,
+    "name": "camera",
+    "imgUrl": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
+    "description": "like new",
+    "isAvailable": true
+}
+```
+</details>
 
-- If you need to make changes to a migration file that has already been released to Heroku, follow this sequence:
+-----------------------------------------------------------------------------------------
 
-  1. Roll back migrations in the Heroku database
-  2. Deploy the latest code to Heroku
-  3. Migrate the Heroku database to the latest
+### GET - Get Owned Equipment
+<details>
+<summary>IN PROCESS</summary>
 
-- If your frontend devs are clear on the shape of the data they need, you can quickly build provisional endpoints that return mock data. They shouldn't have to wait for you to build the entire backend.
+```JSON
+Returns owned equipment. Only owners can make this call.
 
-- Keep your endpoints super lean: the bulk of the code belongs inside models and other middlewares.
+what you get back:
+[
+    {
+        "equipment_id": 1,
+        "equipment_name": "camera",
+        "equipment_description": "like new",
+        "equipment_img": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
+        "equipment_available": true
+    },
+    {
+        "equipment_id": 2,
+        "equipment_name": "video camera",
+        "equipment_description": "excellent audio and image",
+        "equipment_img": "https://images.unsplash.com/photo-1589872307379-0ffdf9829123?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1051&q=80",
+        "equipment_available": false
+    },
+    {
+        "equipment_id": 3,
+        "equipment_name": "podcast microphone",
+        "equipment_description": "best audio out there",
+        "equipment_img": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+        "equipment_available": false
+    }
+]
+```
+</details>
 
-- Validating and sanitizing client data using a library is much less work than doing it manually.
+-----------------------------------------------------------------------------------------
 
-- Revealing crash messages to clients is a security risk, but during development it's helpful if your frontend devs are able to tell you what crashed.
+### GET - Get Rented Equipment
+<details>
+<summary>IN PROCESS</summary>
 
-- PostgreSQL comes with [fantastic built-in functions](https://hashrocket.com/blog/posts/faster-json-generation-with-postgresql) for hammering rows into whatever JSON shape.
+```JSON
+Returns rented equipment. Only renters can make this call.
 
-- If you want to edit a migration that has already been released but don't want to lose all the data, make a new migration instead. This is a more realistic flow for production apps: prod databases are never migrated down. We can migrate Heroku down freely only because there's no valuable data from customers in it. In this sense, Heroku is acting more like a staging environment than production.
+what you get back:
+[
+    {
+        "owner": {
+            "id": 2,
+            "username": "Mario"
+        },
+        "id": 3,
+        "name": "podcast microphone",
+        "imgUrl": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+        "description": "best audio out there",
+        "isAvailable": false
+    },
+    {
+        "owner": {
+            "id": 2,
+            "username": "Mario"
+        },
+        "id": 2,
+        "name": "video camera",
+        "imgUrl": "https://images.unsplash.com/photo-1589872307379-0ffdf9829123?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1051&q=80",
+        "description": "excellent audio and image",
+        "isAvailable": false
+    }
+]
+```
+</details>
 
-- If your fronted devs are interested in running the API locally, help them set up PostgreSQL & pgAdmin in their machines, and teach them how to run migrations in their local. This empowers them to (1) help you troubleshoot bugs, (2) obtain the latest code by simply doing `git pull` and (3) work with their own data, without it being wiped every time you roll back the Heroku db. Collaboration is more fun and direct, and you don't need to deploy as often.
+-----------------------------------------------------------------------------------------
+
+### POST - Add Equipment
+<details>
+<summary>IN PROCESS</summary>
+    
+```JSON
+Adds equipment to database. Only owners can make this call.
+
+what you need:
+{
+    "name": "mining rig",
+    "description": "generates money",
+    "imgUrl": "https://cdn.mos.cms.futurecdn.net/pLmxqBBToop8EyqSyTzExn-970-80.jpg.webp"
+}
+
+what you get back:
+{
+    "owner": {
+        "id": 2,
+        "username": "Mario"
+    },
+    "id": 4,
+    "name": "mining rig",
+    "imgUrl": "insert-image-url-here",
+    "description": "generates money",
+    "isAvailable": true
+}
+```
+</details>
+
+-----------------------------------------------------------------------------------------
+
+### PUT - Update Equipment By ID
+<details>
+<summary>IN PROCESS</summary>
+    
+```JSON
+Updates existing owned equipment. Only owner of equipment can make this call.
+
+what you need (optional):
+{
+    "name": "mining rig",
+    "description": "generates money",
+    "imgUrl": "https://cdn.mos.cms.futurecdn.net/pLmxqBBToop8EyqSyTzExn-970-80.jpg.webp"
+}
+
+what you get back:
+{
+    "owner": {
+        "id": 2,
+        "username": "Mario"
+    },
+    "id": 4,
+    "name": "mining rig",
+    "imgUrl": "insert-image-url-here",
+    "description": "generates money",
+    "isAvailable": true
+}
+```
+</details>
+
+-----------------------------------------------------------------------------------------
+
+### DELETE - Remove Equipment By ID
+<details>
+<summary>IN PROCESS</summary>
+    
+```JSON
+Deletes equipment with specific id. Only owner of equipment can make this call.
+
+what you get back:
+{
+    "owner": {
+        "id": 2,
+        "username": "Mario"
+    },
+    "id": 4,
+    "name": "mining rig",
+    "imgUrl": "insert-image-url-here",
+    "description": "generates money",
+    "isAvailable": true
+}
+```
+</details>
+
+-----------------------------------------------------------------------------------------
+
+### POST - Create A Rental Request
+<details>
+<summary>IN PROCESS</summary>
+    
+```JSON
+Creates a request to rent equipment. Only renters can make this call.
+
+what you need:
+{
+    "equipment_id": 2
+}
+
+what you get back:
+{
+    "request_id": 4,
+    "user_id": 1,
+    "equipment_id": 2,
+    "accepted": false
+}
+```
+</details>
+
+-----------------------------------------------------------------------------------------
+
+### PUT - Accept Rental Request By ID
+<details>
+<summary>IN PROCESS</summary>
+    
+```JSON
+Accepts request to rent equipment. Makes equipment unavailable until
+rental is terminated. Only owner of equipment can make this call.
+
+what you get back:
+{
+    "request_id": 4,
+    "user_id": 1,
+    "equipment_id": 2,
+    "accepted": false
+}
+```
+</details>
+
+-----------------------------------------------------------------------------------------
+
+### DELETE - Terminate Rental Request By ID
+<details>
+<summary>IN PROCESS</summary>
+
+```JSON
+Accepts request to rent equipment. Makes equipment unavailable until
+rental is terminated. Only owner of equipment can make this call.
+
+what you get back:
+{
+    "request_id": 4,
+    "user_id": 1,
+    "equipment_id": 2,
+    "accepted": false
+}
+```
+</details>
+
+-----------------------------------------------------------------------------------------
