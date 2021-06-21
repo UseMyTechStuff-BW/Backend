@@ -3,7 +3,7 @@
 ### POST - Create Account
 create a user with role type of renter or owner
 <details>
-<summary>IN PROCESS </summary>
+<summary>https://usemytechstufflambda.herokuapp.com/api/auth/register</summary>
 
 ```JSON
 what you need:
@@ -26,7 +26,7 @@ what you get back:
 
 ### POST - Login
 <details>
-<summary>IN PROCESS</summary>
+<summary>https://usemytechstufflambda.herokuapp.com/api/auth/login</summary>
 
 ```JSON
 what you need:
