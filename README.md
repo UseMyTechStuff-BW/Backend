@@ -49,7 +49,7 @@ what you get back:
 
 ### GET - Get All Equipment
 <details>
-<summary>IN PROCESS</summary>
+<summary>https://usemytechstufflambda.herokuapp.com/api/equipment</summary>
     
 ```JSON
 Returns ALL equipment. Anyone can make this call.
@@ -97,7 +97,7 @@ what you get back:
 
 ### GET - Get Equipment By Id
 <details>
-<summary>IN PROCESS</summary>
+<summary>https://usemytechstufflambda.herokuapp.com/api/equipment/:equipment_id</summary>
     
 ```JSON
 Returns equipment with specific id. Anyone can make this call.
@@ -105,7 +105,8 @@ Returns equipment with specific id. Anyone can make this call.
 what you get back:
 {
     "owner": {
-        "id": 2
+        "id": 2,
+        "username": "Mario"
     },
     "id": 1,
     "name": "camera",
@@ -156,7 +157,7 @@ what you get back:
 
 ### POST - Add Equipment
 <details>
-<summary>IN PROCESS</summary>
+<summary>https://usemytechstufflambda.herokuapp.com/api/equipment</summary>
     
 ```JSON
 Adds equipment to database. Only owners can make this call.
@@ -187,7 +188,7 @@ what you get back:
 
 ### PUT - Update Equipment By ID
 <details>
-<summary>IN PROCESS</summary>
+<summary>https://usemytechstufflambda.herokuapp.com/api/equipment/:equipment_id</summary>
     
 ```JSON
 Updates existing owned equipment. Only owner of equipment can make this call.
@@ -218,7 +219,7 @@ what you get back:
 
 ### DELETE - Remove Equipment By ID
 <details>
-<summary>IN PROCESS</summary>
+<summary>https://usemytechstufflambda.herokuapp.com/api/equipment/:equipment_id</summary>
     
 ```JSON
 Deletes equipment with specific id. Only owner of equipment can make this call.
