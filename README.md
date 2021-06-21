@@ -3,7 +3,7 @@
 ### POST - Create Account
 create a user with role type of renter or owner
 <details>
-<summary>IN PROCESS</summary>
+<summary>IN PROCESS </summary>
 
 ```JSON
 what you need:
