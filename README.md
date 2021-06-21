@@ -16,8 +16,7 @@ what you need:
 what you get back:
 {
     "user_id": 12,
-    "username": "mary",
-    "password": "$2a$08$cHlS2uqmuiHGvZcqcnFKNOnWcHJD49nDpINZslFqKaQi8dWMIoclC",
+    "username": "marco",
     "role": "owner"
 }
 ```
