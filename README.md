@@ -155,43 +155,6 @@ what you get back:
 
 -----------------------------------------------------------------------------------------
 
-### GET - Get Rented Equipment
-<details>
-<summary>IN PROCESS</summary>
-
-```JSON
-Returns rented equipment. Only renters can make this call.
-
-what you get back:
-[
-    {
-        "owner": {
-            "id": 2,
-            "username": "Mario"
-        },
-        "id": 3,
-        "name": "podcast microphone",
-        "imgUrl": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-        "description": "best audio out there",
-        "isAvailable": false
-    },
-    {
-        "owner": {
-            "id": 2,
-            "username": "Mario"
-        },
-        "id": 2,
-        "name": "video camera",
-        "imgUrl": "https://images.unsplash.com/photo-1589872307379-0ffdf9829123?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1051&q=80",
-        "description": "excellent audio and image",
-        "isAvailable": false
-    }
-]
-```
-</details>
-
------------------------------------------------------------------------------------------
-
 ### POST - Add Equipment
 <details>
 <summary>IN PROCESS</summary>
