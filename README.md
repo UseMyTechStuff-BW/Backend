@@ -121,7 +121,7 @@ what you get back:
 
 ### GET - Get Owned Equipment
 <details>
-<summary>IN PROCESS</summary>
+<summary>https://usemytechstufflambda.herokuapp.com/api/users/owner</summary>
 
 ```JSON
 Returns owned equipment. Only owners can make this call.
@@ -148,6 +148,43 @@ what you get back:
         "equipment_description": "best audio out there",
         "equipment_img": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
         "equipment_available": false
+    }
+]
+```
+</details>
+
+-----------------------------------------------------------------------------------------
+
+### GET - Get Rented Equipment
+<details>
+<summary>https://usemytechstufflambda.herokuapp.com/api/users/renter</summary>
+
+```JSON
+Returns rented equipment. Only renters can make this call.
+
+what you get back:
+[
+    {
+        "owner": {
+            "id": 2,
+            "username": "Mario"
+        },
+        "id": 3,
+        "name": "podcast microphone",
+        "imgUrl": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+        "description": "best audio out there",
+        "isAvailable": false
+    },
+    {
+        "owner": {
+            "id": 2,
+            "username": "Mario"
+        },
+        "id": 2,
+        "name": "video camera",
+        "imgUrl": "https://images.unsplash.com/photo-1589872307379-0ffdf9829123?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1051&q=80",
+        "description": "excellent audio and image",
+        "isAvailable": false
     }
 ]
 ```
@@ -243,7 +280,7 @@ what you get back:
 
 ### POST - Create A Rental Request
 <details>
-<summary>IN PROCESS</summary>
+<summary>https://usemytechstufflambda.herokuapp.com/api/requests</summary>
     
 ```JSON
 Creates a request to rent equipment. Only renters can make this call.
@@ -267,7 +304,7 @@ what you get back:
 
 ### PUT - Accept Rental Request By ID
 <details>
-<summary>IN PROCESS</summary>
+<summary>https://usemytechstufflambda.herokuapp.com/api/requests/:equipment_id</summary>
     
 ```JSON
 Accepts request to rent equipment. Makes equipment unavailable until
@@ -278,7 +315,7 @@ what you get back:
     "request_id": 4,
     "user_id": 1,
     "equipment_id": 2,
-    "accepted": false
+    "accepted": true
 }
 ```
 </details>
@@ -287,7 +324,7 @@ what you get back:
 
 ### DELETE - Terminate Rental Request By ID
 <details>
-<summary>IN PROCESS</summary>
+<summary>https://usemytechstufflambda.herokuapp.com/api/requests/:equipment_id</summary>
 
 ```JSON
 Accepts request to rent equipment. Makes equipment unavailable until
