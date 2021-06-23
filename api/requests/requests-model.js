@@ -1,4 +1,4 @@
-const db = require("../data/db-config")
+const db = require('../data/db-config')
 
 function findById(request_id) {
   return db("requests").where("request_id", request_id).first()
